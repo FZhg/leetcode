@@ -1,5 +1,5 @@
 # Solutions Source
-Currently, I can't indpendently write any solutions by my own. I just use [halfrost's solution](https://github.com/halfrost/LeetCode-Go)
+Currently, I can't independently write any solutions by my own. I just use [halfrost's solution](https://github.com/halfrost/LeetCode-Go)
 
 
 #  Thoughts
@@ -7,4 +7,5 @@ Currently, I can't indpendently write any solutions by my own. I just use [halfr
 I just started leetcoding. Grinding is not the right way to leetcode.
 
 #### 5
+- [ ] write optimized algorithm
 

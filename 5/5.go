@@ -1,36 +1,28 @@
 package _5
 
-// Brutal-Force: expand the parlindrom from the center
-// Credit: https://www.youtube.com/watch?v=XYQecbcd6_c
-// TODO: Dynamic Programming
-
-import "log"
-
+// O(n^2)
+// Grow the surrounding palindrome("bab", "bbb") or two("bb") centroid characters
 func longestPalindrome(s string) string {
 	result := ""
 	for i := 0; i < len(s); i++ {
-		centerLeftIndex, centerRightIndex := i, i
-		if i != len(s)-1 && s[i] == s[i+1] {
-			centerRightIndex = i + 1
-			// for edge case: bb
-		}
+		// for even numbered palindrome like "aa"
+		result = growPalindrome(i, i+1, s, result)
+		// for odd numbered palindrome like "aaa", "bab"
+		result = growPalindrome(i, i, s, result)
+	}
+	return result
+}
 
-		for centerLeftIndex >= 0 && centerRightIndex < len(s) {
-			log.Printf("centerLeftIndex: %d, centerRightIndex: %d", centerLeftIndex, centerRightIndex)
-			if s[centerLeftIndex] == s[centerRightIndex] {
-				if len(result) < centerRightIndex-centerLeftIndex+1 {
-					result = s[centerLeftIndex : centerRightIndex+1]
-				}
-			} else {
-				break // the palindrome can not grow
-				// for example, dabac. d and c are not equal.
-			}
-			// expand the palindrome
-			centerLeftIndex--
-			centerRightIndex++
-		}
-
+func growPalindrome(centerLeftIndex int, centerRightIndex int, s string, result string) string {
+	var palindromeSubString string
+	for centerLeftIndex >= 0 && centerRightIndex < len(s) && s[centerLeftIndex] == s[centerRightIndex] {
+		palindromeSubString = s[centerLeftIndex : centerRightIndex+1]
+		centerRightIndex++
+		centerLeftIndex--
 	}
 
+	if len(result) < len(palindromeSubString) {
+		return palindromeSubString
+	}
 	return result
 }
