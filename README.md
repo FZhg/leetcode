@@ -7,5 +7,6 @@ Currently, I can't independently write any solutions by my own. I just use [half
 I just started leetcoding. Grinding is not the right way to leetcode.
 
 #### 5
-- [ ] write optimized algorithm
+- [X] write Manacher's algorithm
+Pay attention to what happened at the last iteration
 
