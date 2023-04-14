@@ -1,7 +1,6 @@
 package _5
 
 import (
-	"log"
 	"strings"
 )
 
@@ -50,6 +49,8 @@ func manacharLongestPalindromeSubstring(s string) string {
 			centerRightIndex := pivotRightLimit + 1 // IMPORTANT: the chars beyond pivotRightLimit + 1  are not symmetric
 			centerLeftIndex := mirrorPosition(center, centerRightIndex)
 			centerRightLimit = growPalindrome(centerLeftIndex, centerRightIndex, stubString)
+			palindromeLength := (centerRightLimit-center)*2 + 1
+			palindromeLengths[center] = palindromeLength
 
 			// update the pivot
 			if pivotRightLimit <= centerRightLimit {
@@ -76,7 +77,6 @@ func manacharLongestPalindromeSubstring(s string) string {
 	// strip the stub characters
 	// TODO: calculate the relation of stub string index and original string index
 	LPSStubString := stubString[center-maxLength/2 : center+maxLength/2]
-	log.Println(LPSStubString)
 	LPS := strings.Split(LPSStubString, "#")
 
 	return strings.Join(LPS, "")
@@ -84,7 +84,7 @@ func manacharLongestPalindromeSubstring(s string) string {
 
 /*
 *
-growPalindrome grow the palindrome and returns the central right limit.
+growPalindrome grow the palindrome and returns the central right limit
 */
 func growPalindrome(centerLeftIndex int, centerRightIndex int, stubString string) int {
 	centerRightLimit := centerRightIndex - 1
