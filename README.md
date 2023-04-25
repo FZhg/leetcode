@@ -10,3 +10,5 @@ I just started leetcoding. Grinding is not the right way to leetcode.
 - [X] write Manacher's algorithm
 Pay attention to what happened at the last iteration
 
+#### 6
+- [] look at the fastest algorithm
